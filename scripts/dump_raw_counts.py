@@ -1,15 +1,24 @@
-#print out table_name
+#!/usr/bin/env python
 import duckdb
-con = duckdb.connect('main.db')
-tableName = con.sql("SELECT table_name From information_schema.tables;")
-print(tableName)
-#print row count of each table
-# bike_data,central_park_weather,fhv_bases,
-# fhv_tripdata,fhvhv_tripdata,green_tripdata,yellow_tripdata
-print(con.sql("select count(*) as bike_data_count from bike_data"))
-print(con.sql("select count(*) as central_park_weather_count from central_park_weather"))
-print(con.sql("select count(*) as fhv_bases_count from fhv_bases"))
-print(con.sql("select count(*) as fhv_tripdata_count from fhv_tripdata"))
-print(con.sql("select count(*) as fhvhv_tripdata_count from fhvhv_tripdata"))
-print(con.sql("select count(*) as green_tripdata_count from green_tripdata"))
-print(con.sql("select count(*) as yellow_tripdata_count from yellow_tripdata"))
+import sys
+
+raw_tables = [
+    "central_park_weather",
+    "fhv_bases",
+    "fhv_tripdata",
+    "fhvhv_tripdata",
+    "green_tripdata",
+    "yellow_tripdata",
+    "bike_data",
+]
+
+
+def main(conn):
+    for t in sorted(raw_tables):
+        rows = conn.sql(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+        print(t, rows)
+
+
+if __name__ == "__main__":
+    with duckdb.connect(sys.argv[1]) as conn:
+        main(conn)
