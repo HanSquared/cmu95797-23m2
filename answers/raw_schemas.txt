@@ -1,7 +1,7 @@
-SELECT table_name
-From information_schema.tables;
+
+SHOW TABLES;
 ┌──────────────────────┐
-│      table_name      │
+│         name         │
 │       varchar        │
 ├──────────────────────┤
 │ bike_data            │
@@ -12,41 +12,26 @@ From information_schema.tables;
 │ green_tripdata       │
 │ yellow_tripdata      │
 └──────────────────────┘
---print out schemas
-SELECT table_schema
-FROM information_schema.tables;
-┌──────────────┐
-│ table_schema │
-│   varchar    │
-├──────────────┤
-│ main         │
-│ main         │
-│ main         │
-│ main         │
-│ main         │
-│ main         │
-│ main         │
-└──────────────┘
-SHOW bike_data;
+DESCRIBE "bike_data";
 ┌─────────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
 │       column_name       │ column_type │  null   │   key   │ default │ extra │
 │         varchar         │   varchar   │ varchar │ varchar │ varchar │ int32 │
 ├─────────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
-│ tripduration            │ BIGINT      │ YES     │         │         │       │
-│ starttime               │ TIMESTAMP   │ YES     │         │         │       │
-│ stoptime                │ TIMESTAMP   │ YES     │         │         │       │
-│ start station id        │ BIGINT      │ YES     │         │         │       │
+│ tripduration            │ VARCHAR     │ YES     │         │         │       │
+│ starttime               │ VARCHAR     │ YES     │         │         │       │
+│ stoptime                │ VARCHAR     │ YES     │         │         │       │
+│ start station id        │ VARCHAR     │ YES     │         │         │       │
 │ start station name      │ VARCHAR     │ YES     │         │         │       │
-│ start station latitude  │ DOUBLE      │ YES     │         │         │       │
-│ start station longitude │ DOUBLE      │ YES     │         │         │       │
-│ end station id          │ BIGINT      │ YES     │         │         │       │
+│ start station latitude  │ VARCHAR     │ YES     │         │         │       │
+│ start station longitude │ VARCHAR     │ YES     │         │         │       │
+│ end station id          │ VARCHAR     │ YES     │         │         │       │
 │ end station name        │ VARCHAR     │ YES     │         │         │       │
-│ end station latitude    │ DOUBLE      │ YES     │         │         │       │
-│ end station longitude   │ DOUBLE      │ YES     │         │         │       │
-│ bikeid                  │ BIGINT      │ YES     │         │         │       │
+│ end station latitude    │ VARCHAR     │ YES     │         │         │       │
+│ end station longitude   │ VARCHAR     │ YES     │         │         │       │
+│ bikeid                  │ VARCHAR     │ YES     │         │         │       │
 │ usertype                │ VARCHAR     │ YES     │         │         │       │
-│ birth year              │ BIGINT      │ YES     │         │         │       │
-│ gender                  │ BIGINT      │ YES     │         │         │       │
+│ birth year              │ VARCHAR     │ YES     │         │         │       │
+│ gender                  │ VARCHAR     │ YES     │         │         │       │
 │ ride_id                 │ VARCHAR     │ YES     │         │         │       │
 │ rideable_type           │ VARCHAR     │ YES     │         │         │       │
 │ started_at              │ VARCHAR     │ YES     │         │         │       │
@@ -64,36 +49,36 @@ SHOW bike_data;
 ├─────────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
 │ 29 rows                                                           6 columns │
 └─────────────────────────────────────────────────────────────────────────────┘
-SHOW central_park_weather;
+DESCRIBE "central_park_weather";
 ┌─────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
 │ column_name │ column_type │  null   │   key   │ default │ extra │
 │   varchar   │   varchar   │ varchar │ varchar │ varchar │ int32 │
 ├─────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
 │ STATION     │ VARCHAR     │ YES     │         │         │       │
 │ NAME        │ VARCHAR     │ YES     │         │         │       │
-│ DATE        │ DATE        │ YES     │         │         │       │
-│ AWND        │ DOUBLE      │ YES     │         │         │       │
-│ PRCP        │ DOUBLE      │ YES     │         │         │       │
-│ SNOW        │ DOUBLE      │ YES     │         │         │       │
-│ SNWD        │ DOUBLE      │ YES     │         │         │       │
-│ TMAX        │ BIGINT      │ YES     │         │         │       │
-│ TMIN        │ BIGINT      │ YES     │         │         │       │
+│ DATE        │ VARCHAR     │ YES     │         │         │       │
+│ AWND        │ VARCHAR     │ YES     │         │         │       │
+│ PRCP        │ VARCHAR     │ YES     │         │         │       │
+│ SNOW        │ VARCHAR     │ YES     │         │         │       │
+│ SNWD        │ VARCHAR     │ YES     │         │         │       │
+│ TMAX        │ VARCHAR     │ YES     │         │         │       │
+│ TMIN        │ VARCHAR     │ YES     │         │         │       │
 │ filename    │ VARCHAR     │ YES     │         │         │       │
 ├─────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
 │ 10 rows                                               6 columns │
 └─────────────────────────────────────────────────────────────────┘
-SHOW fhv_bases;
-┌─────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
-│ column_name │ column_type │  null   │   key   │ default │ extra │
-│   varchar   │   varchar   │ varchar │ varchar │ varchar │ int32 │
-├─────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
-│ column0     │ VARCHAR     │ YES     │         │         │       │
-│ column1     │ VARCHAR     │ YES     │         │         │       │
-│ column2     │ VARCHAR     │ YES     │         │         │       │
-│ column3     │ VARCHAR     │ YES     │         │         │       │
-│ filename    │ VARCHAR     │ YES     │         │         │       │
-└─────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
-SHOW fhv_tripdata;
+DESCRIBE "fhv_bases";
+┌──────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│ column_name  │ column_type │  null   │   key   │ default │ extra │
+│   varchar    │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├──────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ base_number  │ VARCHAR     │ YES     │         │         │       │
+│ base_name    │ VARCHAR     │ YES     │         │         │       │
+│ dba          │ VARCHAR     │ YES     │         │         │       │
+│ dba_category │ VARCHAR     │ YES     │         │         │       │
+│ filename     │ VARCHAR     │ YES     │         │         │       │
+└──────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
+DESCRIBE "fhv_tripdata";
 ┌────────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
 │      column_name       │ column_type │  null   │   key   │ default │ extra │
 │        varchar         │   varchar   │ varchar │ varchar │ varchar │ int32 │
@@ -107,7 +92,7 @@ SHOW fhv_tripdata;
 │ Affiliated_base_number │ VARCHAR     │ YES     │         │         │       │
 │ filename               │ VARCHAR     │ YES     │         │         │       │
 └────────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
-SHOW fhvhv_tripdata;
+DESCRIBE "fhvhv_tripdata";
 ┌──────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
 │     column_name      │ column_type │  null   │   key   │ default │ extra │
 │       varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
@@ -140,7 +125,7 @@ SHOW fhvhv_tripdata;
 ├──────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
 │ 25 rows                                                        6 columns │
 └──────────────────────────────────────────────────────────────────────────┘
-SHOW green_tripdata;
+DESCRIBE "green_tripdata";
 ┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
 │      column_name      │ column_type │  null   │   key   │ default │ extra │
 │        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
@@ -169,7 +154,7 @@ SHOW green_tripdata;
 ├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
 │ 21 rows                                                         6 columns │
 └───────────────────────────────────────────────────────────────────────────┘
-SHOW yellow_tripdata;
+DESCRIBE "yellow_tripdata";
 ┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
 │      column_name      │ column_type │  null   │   key   │ default │ extra │
 │        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
