@@ -34,6 +34,7 @@ renamed as (
 	from source
     where base_passenger_fare > 0
     and driver_pay >0
+    and dispatching_base_num = 'B0%'--dispatching base numbers are in the pattern of B0XXXX, some garbage values are stored in dispatching_base_num column
 
 )
 
