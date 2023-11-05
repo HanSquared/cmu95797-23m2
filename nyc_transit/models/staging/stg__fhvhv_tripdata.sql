@@ -32,6 +32,9 @@ renamed as (
         filename
 
 	from source
+    where base_passenger_fare > 0
+    and driver_pay >0
+
 )
 
 select * from renamed

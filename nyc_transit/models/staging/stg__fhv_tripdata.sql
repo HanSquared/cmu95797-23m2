@@ -10,7 +10,7 @@ renamed as (
         dropOff_datetime::DATETIME,
         PUlocationID as pick_up_taxi_zone,
         DOlocationID as drop_off_taxi_zone,
-        --drop SR_Flag due to all null value
+        --drop SR_Flag due to the entire column is null
         Affiliated_base_number,
         filename
 

@@ -4,9 +4,10 @@ with source as (
 
 join_format as (
     --Data format changed once for Citi Bike Trip Data
-    --Create a query to get rid of duplicated columns
+    --Create a query to get rid of duplicated columns (e.g. old format start station id is as same as new format start_station_id )
+    --Convert usertype from 'customer' and 'subscriber' to 'member' and 'casual' categories
 	select
-		tripduration::double as trip_duration_seconds,
+		tripduration::double as trip_duration,
 		starttime::DATETIME as start_date_time,
         stoptime::DATETIME as stop_date_time,
         'start station id' as start_station_id,
@@ -18,25 +19,27 @@ join_format as (
 		'end station latitude'::double as end_station_latitude,
         'end station longitude'::double as end_station_longitude,
         bikeid as bike_id,
-        -- The command line below referenced the code in this link 
-        -- https://stackoverflow.com/questions/16753122/sql-how-to-replace-values-of-select-return
-        --usertype as member_casual when usertype = 'Subscriber' then 'member' else 'casual', 
-        usertype as user_type,
-        member_casual, 
+        usertype,
         'birth year' as birth_year,
         gender,
         ride_id,
         rideable_type,
-        filename
-
+        filename,
+    case
+        when usertype='Customer' THEN 'casual' 
+        when usertype='subscriber' THEN 'member'
+        else usertype
+    end as member_casual
 	from source
-	where trip_duration_seconds is not null
+	where usertype is not null
+   
+
 ),
 
 new_format as (
     --Create a query to get new format data with unique columns
     select 
-        tripduration::double as trip_duration_seconds,
+        tripduration::double as trip_duration,
         started_at::DATETIME as start_date_time,
         ended_at::DATETIME as stop_date_time,
         start_station_id,
@@ -48,7 +51,7 @@ new_format as (
         end_lat::double as end_station_latitude,
         end_lng::double as end_station_longitude,
         bikeid as bike_id,
-        usertype as user_type,
+        usertype,
         member_casual,
         'birth year' as birth_year,
         gender,
@@ -59,7 +62,7 @@ new_format as (
     from source
 	where member_casual is not null
 ),
-
+--union two tables
 renamed as (
     select * from join_format
     union
