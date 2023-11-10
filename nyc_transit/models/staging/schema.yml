@@ -1,0 +1,79 @@
+models:
+  - name: stg__fhv_bases
+    description: ""
+    columns:
+      - name: base_license_number
+        description: ""
+
+      - name: base_name
+        description: ""
+
+      - name: business_name
+        description: ""
+
+      - name: dba_category
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__bike_data
+    description: ""
+    columns:
+      - name: trip_duration
+        description: ""
+
+      - name: start_date_time
+        description: ""
+
+      - name: stop_date_time
+        description: ""
+
+      - name: start_station_id
+        description: ""
+
+      - name: start_station_name
+        description: ""
+
+      - name: start_station_latitude
+        description: ""
+
+      - name: start_station_longitude
+        description: ""
+
+      - name: end_station_id
+        description: ""
+
+      - name: end_station_name
+        description: ""
+
+      - name: end_station_latitude
+        description: ""
+
+      - name: end_station_longitude
+        description: ""
+
+      - name: bike_id
+        description: ""
+
+      - name: usertype
+        description: ""
+
+      - name: birth_year
+        description: ""
+
+      - name: gender
+        description: ""
+
+      - name: ride_id
+        description: ""
+
+      - name: rideable_type
+        description: ""
+
+      - name: filename
+        description: ""
+
+      - name: member_casual
+        description: ""
+
