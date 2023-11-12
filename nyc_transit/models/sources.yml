@@ -191,6 +191,8 @@ sources:
           - name: hvfhs_license_num
             data_type: CHARACTER VARYING(256)
             description: "The TLC license number of the HVFHS"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: dispatching_base_num
             data_type: CHARACTER VARYING(256)
             description: "The TLC license number of the HVFHS base or business. \n
@@ -202,6 +204,8 @@ sources:
           - name: request_datetime
             data_type: TIMESTAMP
             description: "date/time when passenger requested to be picked up"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: on_scene_datetime
             data_type: TIMESTAMP
             description: "date/time when driver arrived at the pick-up location (Accessible Vehicles-only)"

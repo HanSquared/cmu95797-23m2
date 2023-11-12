@@ -147,7 +147,8 @@ models:
     columns:
       - name: hvfhs_license_num
         description: "The TLC license number of the HVFHS"
-
+        tests: 
+              - not_null
       - name: dispatching_base_num
         description: "The TLC license number of the HVFHS base or business. \n
             As of September 2019, the HVFHS licensees are the following: \n
@@ -230,14 +231,14 @@ models:
                   config:
                     severity: warn
       - name: wav_request_flag
-        description: ""
+        description: "Did the passenger request a wheelchair-accessible vehicle (WAV)? (Y/N)"
         tests: 
               - dbt_expectations.expect_column_values_to_be_of_type: 
                   column_type: bool
                   config:
                     severity: warn
       - name: wav_match_flag
-        description: ""
+        description: "Did the trip occur in a wheelchair-accessible vehicle (WAV)? (Y/N)"
         tests: 
               - dbt_expectations.expect_column_values_to_be_of_type: 
                   column_type: bool
