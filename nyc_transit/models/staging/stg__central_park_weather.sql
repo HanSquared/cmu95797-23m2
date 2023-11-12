@@ -1,3 +1,5 @@
+-- staging model for central park weather 
+-- orginal data source "https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00094728/detail"
 with source as (
 
     select * from {{ source('main', 'central_park_weather') }}

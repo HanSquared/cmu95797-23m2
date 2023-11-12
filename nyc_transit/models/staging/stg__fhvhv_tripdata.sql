@@ -1,3 +1,5 @@
+--staging model for high volume FHV Trip Data
+--original data source: "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
 with source as (
 
     select * from {{ source('main', 'fhvhv_tripdata') }}
@@ -26,7 +28,7 @@ renamed as (
         airport_fee,
         tips,
         driver_pay,
-        {{flag_to_bool("shared_request_flag")}} as shared_request_flag,
+        {{flag_to_bool("shared_request_flag")}} as shared_request_flag, -- flag_to_bool is a macro that converts flag Y/N to boolean 
         {{flag_to_bool("shared_match_flag")}} as shared_match_flag,
         {{flag_to_bool("access_a_ride_flag")}} as access_a_ride_flag,
         {{flag_to_bool("wav_request_flag")}} as wav_request_flag,

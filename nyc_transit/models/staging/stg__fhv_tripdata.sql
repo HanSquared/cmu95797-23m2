@@ -1,3 +1,5 @@
+--staging model for FHV Trip Data
+--original data source: "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
 with source as (
 
     select * from {{ source('main', 'fhv_tripdata') }}
