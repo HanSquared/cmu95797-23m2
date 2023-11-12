@@ -210,37 +210,37 @@ models:
 
       - name: shared_request_flag
         description: "Did the passenger agree to a shared/pooled ride, regardless of whether they were matched? (Y/N)"
-        tests:
-              - accepted_values:
-                  values: [true, false,' ']
+        tests: 
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: shared_match_flag
         description: "Did the passenger share the vehicle with another passenger who booked separately at any point during the trip? (Y/N)"
-        tests:
-              - accepted_values:
-                  values: [true, false,' ']
+        tests: 
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: access_a_ride_flag
         description: "Was the trip administered on behalf of the Metropolitan Transportation Authority (MTA)? (Y/N)"
-        tests:
-              - accepted_values:
-                  values: [true, false,' ']
+        tests: 
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: wav_request_flag
         description: ""
-        tests:
-              - accepted_values:
-                  values: [true, false,' ']
+        tests: 
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: wav_match_flag
         description: ""
-        tests:
-              - accepted_values:
-                  values: [true, false,' ']
+        tests: 
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: filename
@@ -269,8 +269,8 @@ models:
              Y= store and forward trip\n
              N= not a store and forward trip"
         tests: 
-              - accepted_values:
-                  values: ['Y','N',' ']
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: ratecodeid
@@ -375,8 +375,8 @@ models:
              aka “store and forward,” because the vehicle did not have a connection to the server. 
             Y= store and forward trip N= not a store and forward trip"
         tests: 
-              - accepted_values:
-                  values: ['Y','N',' ']
+              - dbt_expectations.expect_column_values_to_be_of_type: 
+                  column_type: bool
                   config:
                     severity: warn
       - name: pulocationid
