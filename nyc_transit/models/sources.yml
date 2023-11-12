@@ -10,14 +10,17 @@ sources:
             data_type: CHARACTER VARYING(256)
             description: "NYC Citi bikers ride start time and date"
             tests: 
-              - not_null
-              - dbt_expectations.expect_column_to_exit
+              - dbt_expectations.expect_column_to_exist
           - name: stoptime
             data_type: CHARACTER VARYING(256)
             description: "NYC Citi bikers ride stop time and date"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: start station id
             data_type: CHARACTER VARYING(256)
             description: "NYC Citi Bike ride start station ID"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: start station name
             data_type: CHARACTER VARYING(256)
             description: "NYC Citi Bike ride start station name"
@@ -30,6 +33,8 @@ sources:
           - name: end station id
             data_type: CHARACTER VARYING(256)
             description: "NYC Citi Bike ride end station ID"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: end station name
             data_type: CHARACTER VARYING(256)
             description: "NYC Citi Bike ride end station name"
@@ -98,12 +103,16 @@ sources:
           - name: station
             data_type: CHARACTER VARYING(256)
             description: "station identification code."
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: name
             data_type: CHARACTER VARYING(256)
             description: "name of the station (usually city/airport name)."
           - name: date
             data_type: CHARACTER VARYING(256)
             description: "date is the year of the record (4 digits) followed by month (2 digits) and day (2 digits)."
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: awnd
             data_type: CHARACTER VARYING(256)
             description: "Average daily wind speed (meters per second or miles per hour as per user preference)"
@@ -130,6 +139,8 @@ sources:
           - name: base_number
             data_type: CHARACTER VARYING(256)
             description: "The TLC license number of the dispatching base"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: base_name
             data_type: CHARACTER VARYING(256)
             description: "The official name of the base entity"
@@ -147,12 +158,18 @@ sources:
           - name: dispatching_base_num
             data_type: CHARACTER VARYING(256)
             description: "The TLC Base License Number of the base that dispatched the trip"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: pickup_datetime
             data_type: TIMESTAMP
             description: "The date and time of the trip pick-up"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: dropoff_datetime
             data_type: TIMESTAMP
             description: "The date and time of the trip dropoff"
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: pulocationid
             data_type: DOUBLE
             description: "TLC Taxi Zone in which the trip began"
@@ -233,43 +250,27 @@ sources:
           - name: shared_request_flag
             data_type: CHARACTER VARYING(256)
             description: "Did the passenger agree to a shared/pooled ride, regardless of whether they were matched? (Y/N)"
-            tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+            
           - name: shared_match_flag
             data_type: CHARACTER VARYING(256)
             description: "Did the passenger share the vehicle with another passenger who booked separately at any point during the trip? (Y/N)"
             tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+              - dbt_expectations.expect_column_to_exist
           - name: access_a_ride_flag
             data_type: CHARACTER VARYING(256)
             description: "Was the trip administered on behalf of the Metropolitan Transportation Authority (MTA)? (Y/N)"
             tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+              - dbt_expectations.expect_column_to_exist
           - name: wav_request_flag
             data_type: CHARACTER VARYING(256)
             description: "Did the passenger request a wheelchair-accessible vehicle (WAV)? (Y/N)"
             tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+              - dbt_expectations.expect_column_to_exist
           - name: wav_match_flag
             data_type: CHARACTER VARYING(256)
             description: "Did the trip occur in a wheelchair-accessible vehicle (WAV)? (Y/N)"
             tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+              - dbt_expectations.expect_column_to_exist
           - name: filename
             data_type: CHARACTER VARYING(256)
 
@@ -279,6 +280,8 @@ sources:
             data_type: BIGINT
             description: "A code indicating the LPEP provider that provided the record.
             1= Creative Mobile Technologies, LLC; 2= VeriFone Inc."
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: lpep_pickup_datetime
             data_type: TIMESTAMP
             description: "The date and time when the meter was engaged."
@@ -291,11 +294,7 @@ sources:
              aka “store and forward,” because the vehicle did not have a connection to the server.\n
              Y= store and forward trip\n
              N= not a store and forward trip"
-            tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+
           - name: ratecodeid
             data_type: DOUBLE
             description: "The final rate code in effect at the end of the trip.
@@ -345,11 +344,7 @@ sources:
             description: "A code indicating whether the trip was a street-hail or a dispatch \n
             that is automatically assigned based on the metered rate in use but can be altered by the driver.\n
             1= Street-hail 2= Dispatch"
-            tests: 
-              - accepted_values:
-                  values: [1,2]
-                  config:
-                    severity: warn
+            
           - name: congestion_surcharge
             data_type: DOUBLE
             description: "Total amount collected in trip for NYS congestion surcharge."
@@ -363,16 +358,17 @@ sources:
             description: "A code indicating the LPEP provider that provided the record.\n
             1= Creative Mobile Technologies, LLC; 2= VeriFone Inc."
             tests: 
-              - accepted_values:
-                  values: [1,2]
-                  config:
-                    severity: warn
+              - dbt_expectations.expect_column_to_exist
           - name: tpep_pickup_datetime
             data_type: TIMESTAMP
             description: "The date and time when the meter was engaged."
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: tpep_dropoff_datetime
             data_type: TIMESTAMP
-            description: "The date and time when the meter was disengaged.   "
+            description: "The date and time when the meter was disengaged."
+            tests: 
+              - dbt_expectations.expect_column_to_exist
           - name: passenger_count
             data_type: DOUBLE
             description: "The number of passengers in the vehicle. This is a driver-entered value."
@@ -383,21 +379,13 @@ sources:
             data_type: DOUBLE
             description: "The final rate code in effect at the end of the trip.\n
             1= Standard rate 2=JFK 3=Newark 4=Nassau or Westchester 5=Negotiated fare 6=Group ride "
-            tests: 
-              - accepted_values:
-                  values: [1,2,3,4,5,6]
-                  config:
-                    severity: warn
+            
           - name: store_and_fwd_flag
             data_type: CHARACTER VARYING(256)
             description: "This flag indicates whether the trip record was held in vehicle memory before sending to the vendor,
              aka “store and forward,” because the vehicle did not have a connection to the server. 
             Y= store and forward trip N= not a store and forward trip "
-            tests: 
-              - accepted_values:
-                  values: ['Y','N']
-                  config:
-                    severity: warn
+            
           - name: pulocationid
             data_type: BIGINT
             description: "TLC Taxi Zone in which the taximeter was engaged"
@@ -408,11 +396,7 @@ sources:
             data_type: BIGINT
             description: "A numeric code signifying how the passenger paid for the trip.
             1= Credit card 2= Cash 3= No charge 4= Dispute 5= Unknown 6= Voided trip"
-            tests: 
-              - accepted_values:
-                  values: [1,2,3,4,5,6]
-                  config:
-                    severity: warn
+            
           - name: fare_amount
             data_type: DOUBLE
             description: "The time-and-distance fare calculated by the meter."
