@@ -85,10 +85,10 @@ models:
         description: "taxi or bike trip"
 
       - name: date
-        description: "bikes and taxis ride date"
+        description: "bikes or taxis trip start date"
 
       - name: trips
-        description: ""
+        description: "number of total trips"
 
       - name: average_trip_duration_min
         description: "average trip duration in minutes"
@@ -97,13 +97,13 @@ models:
     description: "all trips including bikes and taxis with duration"
     columns:
       - name: type
-        description: "taxi or bike"
+        description: "different taxi or bike types"
 
       - name: started_at_ts
-        description: ""
+        description: "start time and date"
 
       - name: ended_at_ts
-        description: "start time and date"
+        description: "end time and date"
 
       - name: duration_min
         description: "duration in minutes"
