@@ -1,0 +1,112 @@
+models:
+  - name: mart__dim_bike_stations
+    description: "bike stations with name, latitude and longitude"
+    columns:
+      - name: station_id
+        description: "bike station id, primary key"
+        tests:
+              - unique
+
+      - name: station_name
+        description: "NYC Citi Bike ride start station name"
+
+      - name: station_lat
+        description: "NYC Citi Bike ride start station latitude"
+
+      - name: station_lng
+        description: "NYC Citi Bike ride start station longitude"
+
+  - name: mart__dim_locations
+    description: "taxi locations, used to join with pulocationid and dolocationid,
+      taken from dbt seed. Not tested as data is small enough to check visually,\n
+       as should be the case with use of seeds"
+    columns:
+      - name: locationid
+        description: "primary key"
+
+      - name: borough
+        description: "taxi pickup or dropoff location borough"
+
+      - name: zone
+        description: "taxi pickup or dropoff location zone"
+
+      - name: service_zone
+        description: "taxi service zone"
+
+  - name: mart__fact_all_bike_trips
+    description: "bike trip data normalised with station data stripped out to dim"
+    columns:
+      - name: started_at_ts
+        description: "NYC Citi bikers ride start time and date"
+
+      - name: ended_at_ts
+        description: "NYC Citi bikers ride stop time and date"
+
+      - name: duration_min
+        description: "bike trip duration in minutes"
+
+      - name: duration_sec
+        description: "bike trip duration in seconds"
+
+      - name: start_station_id
+        description: "NYC Citi Bike ride start station ID"
+
+      - name: end_station_id
+        description: "NYC Citi Bike ride end station ID"
+
+  - name: mart__fact_all_taxi_trips
+    description: "all taxi trip data for analysis"
+    columns:
+      - name: type
+        description: ""
+
+      - name: pickup_datetime
+        description: "The date and time of the trip pick-up"
+
+      - name: dropoff_datetime
+        description: "The date and time of the trip drop-off"
+
+      - name: duration_min
+        description: "duration in minutes"
+
+      - name: duration_sec
+        description: "duration in seconds"
+
+      - name: pulocationid
+        description: "TLC Taxi Zone in which the trip began"
+
+      - name: dolocationid
+        description: "TLC Taxi Zone in which the trip ended"
+
+  - name: mart__fact_all_trips_daily
+    description: "all trips including bikes and taxis grouped by day, with averaged trip duration"
+    columns:
+      - name: type
+        description: "taxi or bike trip"
+
+      - name: date
+        description: "bikes and taxis ride date"
+
+      - name: trips
+        description: ""
+
+      - name: average_trip_duration_min
+        description: "average trip duration in minutes"
+
+  - name: mart__fact_all_trips
+    description: "all trips including bikes and taxis with duration"
+    columns:
+      - name: type
+        description: "taxi or bike"
+
+      - name: started_at_ts
+        description: ""
+
+      - name: ended_at_ts
+        description: "start time and date"
+
+      - name: duration_min
+        description: "duration in minutes"
+
+      - name: duration_sec
+        description: "duration in seconds"
