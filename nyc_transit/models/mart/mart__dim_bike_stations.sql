@@ -8,7 +8,7 @@ from {{ref('stg__bike_data')}}
 union distinct
 select 
     distinct 
-    start_station_id as station_id,
+    end_station_id as station_id,
     end_station_name as station_name,
     end_lat as station_lat,
     end_lng as station_lng
