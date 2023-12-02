@@ -1,33 +1,24 @@
--- by weekday,count of total trips, trips starting and ending in a different borough,
--- and percentage w/ different start/end
--- The following sql structure is inspired by tconbeer's answer on "https://stackoverflow.com/questions/72101209/dbt-join-multiple-tables"
+-- naive JOIN strategy
+with all_trips as
+(select
+    weekday(pickup_datetime) as weekday,
+    count(*) trips
+    from {{ ref('mart__fact_all_taxi_trips') }} t
+    group by all),
 
-with all_taxi as (
-    select * from {{ref ('mart__fact_all_taxi_trips')}}
-),
-pickup as (
-    select * from {{ref ('mart__dim_locations')}}
-),
-dropoff as (
-    select * from {{ref ('mart__dim_locations')}}
-),
-joined as (
-    select
-        all_taxi.pickup_datetime as started_at_ts,
-        pickup.borough as pickup_borough,
-        dropoff.borough as dropoff_borough
-    from 
-        all_taxi
-        left join pickup on all_taxi.pulocationid = pickup.locationid
-        left join dropoff on all_taxi.dolocationid = dropoff.locationid
-),
-renamed as (
-    select
-        weekday (started_at_ts) as weekday,
-        count(*) as total_trips,
-        sum((pickup_borough != dropoff_borough)::int) as total_different_borough_trips, 
-        sum((pickup_borough != dropoff_borough)::int)/count(*)*100 as different_borough_trips_percent
-    from joined
-    group by weekday
-)
-select * from renamed
+inter_borough as
+(select
+    weekday(pickup_datetime) as weekday,
+    count(*) as trips
+from {{ ref('mart__fact_all_taxi_trips') }} t
+join {{ ref('mart__dim_locations') }} pl on t.PUlocationID = pl.LocationID
+join {{ ref('mart__dim_locations') }} dl on t.DOlocationID = dl.LocationID
+where pl.borough != dl.borough
+group by all)
+
+select all_trips.weekday,
+       all_trips.trips as all_trips,
+       inter_borough.trips as inter_borough_trips,
+       inter_borough.trips / all_trips.trips as percent_inter_borough
+from all_trips
+join inter_borough on (all_trips.weekday = inter_borough.weekday);

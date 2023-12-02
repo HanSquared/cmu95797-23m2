@@ -1,15 +1,21 @@
+with trips_renamed as
+(
+	-- UNION ALL will use the column name from the first SELECT, so no need to rename in subsequent ones
+	select 'bike' as type, started_at_ts, ended_at_ts from {{ ref('stg__bike_data') }}
+	union all
+	select 'fhv' as type, pickup_datetime, dropoff_datetime from {{ ref('stg__fhv_tripdata') }}
+	union all
+	select 'fhvhv' as type, pickup_datetime, dropoff_datetime from {{ ref('stg__fhvhv_tripdata') }}
+	union all
+	select 'green' as type, lpep_pickup_datetime, lpep_dropoff_datetime from {{ ref('stg__green_tripdata') }}
+	union all
+	select 'yellow' as type, tpep_pickup_datetime, tpep_dropoff_datetime from {{ ref('stg__yellow_tripdata') }}
+)
+
 select
-    'bike' as type,
-    started_at_ts,
-    ended_at_ts,
-    duration_min,
-    duration_sec
-from {{ ref('mart__fact_all_bike_trips')}}
-union
-select
-    type,
-    pickup_datetime as started_at_ts,
-    dropoff_datetime as ended_at_ts,
-    duration_min,
-    duration_sec
-from {{ ref('mart__fact_all_taxi_trips')}}
+	type,
+	started_at_ts,
+	ended_at_ts,
+	datediff('minute', started_at_ts, ended_at_ts) as duration_min,
+	datediff('second', started_at_ts, ended_at_ts) as duration_sec
+from trips_renamed
