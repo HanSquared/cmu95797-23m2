@@ -1,0 +1,50 @@
+┌───────────────┬──────────────────────────────────┬─────────────┬───────────────────────────┐
+│    Borough    │               Zone               │ total_trips │ average_trip_duration_sec │
+│    varchar    │             varchar              │    int64    │          double           │
+├───────────────┼──────────────────────────────────┼─────────────┼───────────────────────────┤
+│ Manhattan     │ East Harlem South                │      316550 │        1044.0695277207392 │
+│ Brooklyn      │ Sheepshead Bay                   │      112027 │         934.8135628018246 │
+│ Manhattan     │ TriBeCa/Civic Center             │      403178 │        1106.9735526243992 │
+│ Queens        │ Baisley Park                     │      119463 │         962.5663594585772 │
+│ Queens        │ Rego Park                        │       86467 │        1041.6407993801104 │
+│ Queens        │ South Jamaica                    │      116993 │         946.5106373885617 │
+│ Bronx         │ Pelham Parkway                   │      117703 │         964.9323381731987 │
+│ Bronx         │ Soundview/Bruckner               │      100483 │         868.5632992645523 │
+│ Manhattan     │ Morningside Heights              │      177422 │        1059.1881502857593 │
+│ Queens        │ Steinway                         │      163746 │         988.5346206930245 │
+│ Staten Island │ Saint George/New Brighton        │       79076 │         941.0957812737114 │
+│ Staten Island │ West Brighton                    │       25899 │         999.3502837947411 │
+│ Queens        │ Sunnyside                        │      204976 │         1059.909604051206 │
+│ Queens        │ Bay Terrace/Fort Totten          │       22945 │        1102.8367400305078 │
+│ Bronx         │ Parkchester                      │       95768 │         975.7276125636956 │
+│ Bronx         │ Highbridge                       │      139357 │         929.2528039495684 │
+│ Bronx         │ Mount Hope                       │      199348 │           900.54425928527 │
+│ Manhattan     │ Inwood                           │      130205 │         975.1585576590761 │
+│ Manhattan     │ Sutton Place/Turtle Bay North    │      308887 │         960.9971283997061 │
+│ Brooklyn      │ East Williamsburg                │      245806 │        1055.3691935916943 │
+│    ·          │         ·                        │         ·   │                 ·         │
+│    ·          │         ·                        │         ·   │                 ·         │
+│    ·          │         ·                        │         ·   │                 ·         │
+│ Brooklyn      │ Prospect-Lefferts Gardens        │      292193 │        1110.8770915114326 │
+│ Brooklyn      │ Canarsie                         │      295960 │         981.3475571023112 │
+│ Bronx         │ Co-Op City                       │      133847 │         1004.896822491352 │
+│ Bronx         │ East Concourse/Concourse Village │      204852 │         963.2278132505419 │
+│ Brooklyn      │ Williamsburg (North Side)        │      287947 │        1168.6452020684362 │
+│ Brooklyn      │ Cypress Hills                    │      121774 │        1020.9995894033209 │
+│ Queens        │ LaGuardia Airport                │      446096 │        1799.1131998493597 │
+│ Manhattan     │ Yorkville West                   │      311599 │         963.6426368505676 │
+│ Manhattan     │ Lincoln Square East              │      371649 │         992.7187803545819 │
+│ Brooklyn      │ Greenpoint                       │      245113 │         1084.940688580369 │
+│ Queens        │ Maspeth                          │       86141 │         951.1360792189549 │
+│ Manhattan     │ Lower East Side                  │      331815 │        1050.6074288383588 │
+│ Queens        │ Kew Gardens Hills                │       55931 │        1052.2956857556633 │
+│ Bronx         │ Van Cortlandt Village            │      147043 │          931.244955557218 │
+│ Queens        │ East Flushing                    │       35664 │        1556.6826491700315 │
+│ Manhattan     │ Randalls Island                  │        4670 │          1321.49443254818 │
+│ Manhattan     │ Bloomingdale                     │       73275 │         1039.384878880928 │
+│ Manhattan     │ Union Sq                         │      463665 │        1022.9532205363786 │
+│ Bronx         │ Country Club                     │       10361 │         958.8538751085803 │
+│ Manhattan     │ Inwood Hill Park                 │        8947 │        1020.1949256734101 │
+├───────────────┴──────────────────────────────────┴─────────────┴───────────────────────────┤
+│ 262 rows (40 shown)                                                              4 columns │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
