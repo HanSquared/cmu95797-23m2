@@ -1,0 +1,50 @@
+┌───────────────────────────────────┬─────────────────────────┐
+│               Zone                │ avg_time_btw_pickup_min │
+│              varchar              │         double          │
+├───────────────────────────────────┼─────────────────────────┤
+│ Arrochar/Fort Wadsworth           │       57.45166748539927 │
+│ South Beach/Dongan Hills          │       39.15180032733224 │
+│ Belmont                           │       9.564224643145948 │
+│ Cypress Hills                     │       8.644157571875539 │
+│ Eltingville/Annadale/Prince's Bay │       80.46647809800474 │
+│ Greenwich Village South           │        4.37861323372199 │
+│ Kingsbridge Heights               │        9.97383905475701 │
+│ Pelham Bay                        │       23.42987200890373 │
+│ Sunset Park East                  │      13.284719067090716 │
+│ East Harlem North                 │       3.233086494073708 │
+│ Canarsie                          │      3.5566784588405826 │
+│ Eastchester                       │      10.174007597065561 │
+│ Hamilton Heights                  │      37.692030323914544 │
+│ SoHo                              │       4.890243902439025 │
+│ Two Bridges/Seward Park           │       6.178035238464157 │
+│ West Farms/Bronx River            │       10.35189410330042 │
+│ Broad Channel                     │       661.4814582023885 │
+│ Erasmus                           │       8.597989005693188 │
+│ Jamaica Estates                   │      20.708743212402613 │
+│ Manhattan Valley                  │       6.101998817405016 │
+│       ·                           │               ·         │
+│       ·                           │               ·         │
+│       ·                           │               ·         │
+│ Richmond Hill                     │       7.485124084476996 │
+│ NA                                │       35.89145409903151 │
+│ Springfield Gardens South         │      15.702971626338872 │
+│ Highbridge Park                   │       295.4974733295901 │
+│ Hillcrest/Pomonok                 │      14.333587526383877 │
+│ Sheepshead Bay                    │       9.396104475746702 │
+│ Great Kills                       │      53.070845098830176 │
+│ Middle Village                    │      15.340469562936299 │
+│ New Dorp/Midland Beach            │       57.42225859247136 │
+│ Longwood                          │      11.775009788019464 │
+│ Marble Hill                       │        25.6935826396856 │
+│ Melrose South                     │       5.991092771770062 │
+│ Saint Albans                      │       7.163596273334195 │
+│ Kew Gardens                       │       15.17619665513264 │
+│ Rockaway Park                     │       51.78377447604054 │
+│ UN/Turtle Bay South               │         4.2284365710613 │
+│ East Williamsburg                 │      4.2823864445393705 │
+│ Ocean Parkway South               │      28.866854980254498 │
+│ Lenox Hill West                   │       2.850701280693725 │
+│ Windsor Terrace                   │      22.503698635994358 │
+├───────────────────────────────────┴─────────────────────────┤
+│ 262 rows (40 shown)                               2 columns │
+└─────────────────────────────────────────────────────────────┘
