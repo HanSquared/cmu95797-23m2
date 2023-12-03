@@ -1,1 +1,2 @@
--- 
+--This query calculates the 7 day moving average precipitation for every day in the weather data.
+--The 7 day window center on the day in question (for each date, the 3 days before, the date & 3 days after).
